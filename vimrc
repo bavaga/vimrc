@@ -101,9 +101,9 @@
 " cs<old><new>                         : change surroundings <old> -> <new> (cs"' on "Hello" -> 'Hello')
 " ds<surrounding>                      : delete surrounding (ds" on "Hello" -> Hello)
 " ys<text obj><surrounding>            : (you surround) wrap a <text obj> (ysiw" on Hello -> "Hello")
-" yss<surrounding>                     : wrap the current line
+" yss<surrounding>                     : wrap the current sentence
 " yS<text obj><surrounding>            : wrap <text obj> and place it on a new line
-" ySs<surrounding> or ySS<surrounding> : wrap line and place it on a new line
+" ySs<surrounding> or ySS<surrounding> : wrap sentence and place it on a new line
 " visual mode S<surrounding>           : wrap the selection
 " Aliases for surroundings:
 "	b          : )
@@ -147,6 +147,7 @@ filetype off
 	"call vundle#begin('~/some/path/here')
 
 	Plugin 'gmarik/Vundle.vim'
+	Plugin 'tpope/vim-repeat'
 	Plugin 'gagoar/StripWhiteSpaces'
 	Plugin 'sjl/gundo.vim'
 	Plugin 'vim-scripts/loremipsum'
