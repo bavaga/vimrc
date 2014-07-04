@@ -10,7 +10,7 @@
 " <C-K>           : switch to previous tab
 " <C-L>           : switch to next tab
 " <leader><space> : stop highlighting of search results
-" <leader>tp      : toggle paste mode
+" <leader>pm      : toggle paste mode
 "
 " Spell checking
 " -------------------------------------
@@ -45,37 +45,38 @@
 "
 " Tabularize
 " -------------------------------------
-" <Leader>t&  : tabularize &
-" <Leader>t=  : tabularize =
-" <Leader>t:  : tabularize :
-" <Leader>t:: : tabularize : right aligned
-" <Leader>t,  : tabularize ,
-" <Leader>t,, : tabularize , right aligned
-" <Leader>t;  : tabularize ;
-" <Leader>t;; : tabularize ; right aligned
-" <Leader>t"  : tabularize "
-" <Leader>t|  : tabularize |
+" <leader>t&  : tabularize &
+" <leader>t=  : tabularize =
+" <leader>t:  : tabularize :
+" <leader>t:: : tabularize : right aligned
+" <leader>t,  : tabularize ,
+" <leader>t,, : tabularize , right aligned
+" <leader>t;  : tabularize ;
+" <leader>t;; : tabularize ; right aligned
+" <leader>t"  : tabularize "
+" <leader>t|  : tabularize |
 "
 " Easymotion
 " -------------------------------------
-" <Leader>mw       : move to word
-" <Leader>ms<Char> : move to single character
-" <Leader>mt<Text> : move to text
-" <Leader>ml       : move to line
-" <Leader>mil      : move in line
-" <Leader>mn       : move to next result
-" <Leader>mp       : move to previous result
+" <leader>mw       : move to word
+" <leader>mc<Char> : move to single character
+" <leader>mt<Text> : move to text
+" <leader>ml       : move to line
+" <leader>mil      : move in line
+" <leader>mn       : move to next result
+" <leader>mp       : move to previous result
 "
 " Choosewin
 " ------------------------------
-" <Leader>cw : choose window
+" <leader>cw : choose window
 "
 " CtrlP
 " ------------------------------
-" <Leader>p           : invoke ctrlp
+" <leader>p           : invoke ctrlp
 " <Leader>pcc         : Clear all caches
 " <C-F>, <C-B>        : cycle between modes
 " <C-T>, <C-V>, <C-X> : open in a new tab or in a new split
+" <C-Z>               : mark file
 "
 " StripWhiteSpaces
 " -------------------------------
@@ -86,6 +87,35 @@
 " <C-M> : start / select next marker
 " <C-P> : previous marker
 " <C-X> : skip marker
+"
+" Loremipsum
+" -------------------------------
+" <leader>lorem : generates text
+"
+" Snipmate
+" -------------------------------
+" expr<Tab> : expands the snippet beginning with the name "expr"
+"
+" Surround.vim
+" -------------------------------
+" cs<old><new>                         : change surroundings <old> -> <new> (cs"' on "Hello" -> 'Hello')
+" ds<surrounding>                      : delete surrounding (ds" on "Hello" -> Hello)
+" ys<text obj><surrounding>            : (you surround) wrap a <text obj> (ysiw" on Hello -> "Hello")
+" yss<surrounding>                     : wrap the current line
+" yS<text obj><surrounding>            : wrap <text obj> and place it on a new line
+" ySs<surrounding> or ySS<surrounding> : wrap line and place it on a new line
+" visual mode S<surrounding>           : wrap the selection
+" Aliases for surroundings:
+"	b          : )
+"	B          : }
+"	r          : ]
+"	a          : >
+"	t          : HTML or XML tag
+"	w          : word
+"	W          : WORD
+"	s          : sentence
+"	p          : paragraph
+"	(, { and [ : (<space> ... <space>), {<space> ... <space>}, ...
 "
 " Ruby and Rails (only in ruby files)
 " -------------------------------
@@ -240,7 +270,7 @@ filetype off
 		nnoremap <C-K> :tabprev<CR>
 		nnoremap <C-L> :tabnext<CR>
 		nnoremap <leader><space> :nohlsearch<CR>
-		nnoremap <leader>tp :set paste!<cr>
+		nnoremap <leader>pm :set paste!<cr>
 
 		"vnoremap <leader>c y
 		"vnoremap <leader>x d
@@ -301,12 +331,12 @@ filetype off
 " Plugin tComment {{{
 	let g:tcommentMaps=0 " disable default key mappings
 
-	noremap <Leader>cl :TComment<CR>
-	noremap <Leader>cb :TCommentBlock<CR>
+	noremap <leader>cl :TComment<CR>
+	noremap <leader>cb :TCommentBlock<CR>
 " }}}
 
 " Plugin emmet {{{
-	let g:user_emmet_leader_key='<Leader>x'               " set emmet leader key
+	let g:user_emmet_leader_key='<leader>x'               " set emmet leader key
 	let g:user_emmet_install_global = 0                   " disable automatic emmet installation
 
 	augroup bavaga
@@ -315,52 +345,52 @@ filetype off
 " }}}
 
 " Plugin tasklist {{{
-	nnoremap <Leader>tl :TaskList<cr>
+	nnoremap <leader>tl :TaskList<cr>
 " }}}
 
 " Plugin Tabularize {{{
-	nnoremap <Leader>t& :Tabularize /&<CR>
-	vnoremap <Leader>t& :Tabularize /&<CR>
-	nnoremap <Leader>t= :Tabularize /=<CR>
-	vnoremap <Leader>t= :Tabularize /=<CR>
-	nnoremap <Leader>t: :Tabularize /:<CR>
-	vnoremap <Leader>t: :Tabularize /:<CR>
-	nnoremap <Leader>t:: :Tabularize /:\zs<CR>
-	vnoremap <Leader>t:: :Tabularize /:\zs<CR>
-	nnoremap <Leader>t, :Tabularize /,<CR>
-	vnoremap <Leader>t, :Tabularize /,<CR>
-	nnoremap <Leader>t,, :Tabularize /,\zs<CR>
-	vnoremap <Leader>t,, :Tabularize /,\zs<CR>
-	nnoremap <Leader>t; :Tabularize /;<CR>
-	vnoremap <Leader>t; :Tabularize /;<CR>
-	nnoremap <Leader>t;; :Tabularize /;;\zs<CR>
-	vnoremap <Leader>t;; :Tabularize /;;\zs<CR>
-	nnoremap <Leader>t" :Tabularize /"<CR>
-	vnoremap <Leader>t" :Tabularize /"<CR>
-	nnoremap <Leader>t<Bar> :Tabularize /<Bar><CR>
-	vnoremap <Leader>t<Bar> :Tabularize /<Bar><CR>
+	nnoremap <leader>t& :Tabularize /&<CR>
+	vnoremap <leader>t& :Tabularize /&<CR>
+	nnoremap <leader>t= :Tabularize /=<CR>
+	vnoremap <leader>t= :Tabularize /=<CR>
+	nnoremap <leader>t: :Tabularize /:<CR>
+	vnoremap <leader>t: :Tabularize /:<CR>
+	nnoremap <leader>t:: :Tabularize /:\zs<CR>
+	vnoremap <leader>t:: :Tabularize /:\zs<CR>
+	nnoremap <leader>t, :Tabularize /,<CR>
+	vnoremap <leader>t, :Tabularize /,<CR>
+	nnoremap <leader>t,, :Tabularize /,\zs<CR>
+	vnoremap <leader>t,, :Tabularize /,\zs<CR>
+	nnoremap <leader>t; :Tabularize /;<CR>
+	vnoremap <leader>t; :Tabularize /;<CR>
+	nnoremap <leader>t;; :Tabularize /;;\zs<CR>
+	vnoremap <leader>t;; :Tabularize /;;\zs<CR>
+	nnoremap <leader>t" :Tabularize /"<CR>
+	vnoremap <leader>t" :Tabularize /"<CR>
+	nnoremap <leader>t<Bar> :Tabularize /<Bar><CR>
+	vnoremap <leader>t<Bar> :Tabularize /<Bar><CR>
 " }}}
 
 " Plugin easymotion {{{
 	let g:EasyMotion_do_mapping = 0
-	nmap <Leader>mw <Plug>(easymotion-bd-w)
-	nmap <Leader>ms <Plug>(easymotion-s)
-	nmap  <Leader>mt <Plug>(easymotion-sn)
-	nmap <Leader>mil <Plug>(easymotion-lineanywhere)
-	nmap <Leader>ml <Plug>(easymotion-bd-jk)
-	nmap  <Leader>mn <Plug>(easymotion-next)
-	nmap  <Leader>mp <Plug>(easymotion-prev)
+	nmap <leader>mw <Plug>(easymotion-bd-w)
+	nmap <leader>mc <Plug>(easymotion-s)
+	nmap <leader>mt <Plug>(easymotion-sn)
+	nmap <leader>mil <Plug>(easymotion-lineanywhere)
+	nmap <leader>ml <Plug>(easymotion-bd-jk)
+	nmap <leader>mn <Plug>(easymotion-next)
+	nmap <leader>mp <Plug>(easymotion-prev)
 " }}}
 
 " Plugin choosewin {{{
-	nnoremap  <leader>cw  <Plug>(choosewin)
+	nmap  <leader>cw  <Plug>(choosewin)
 	let g:choosewin_overlay_enable = 1               " show big letters
 	" overlay font broke on mutibyte buffer?
 	" let g:choosewin_overlay_clear_multibyte = 1
 " }}}
 
 " Plugin CtrlP {{{
-	let g:ctrlp_map = '<Leader>p'        " set ctrlp key
+	let g:ctrlp_map = '<leader>p'        " set ctrlp key
 	let g:ctrlp_cmd = 'CtrlP'            " command to execute when ctrlp key was pressed
 	let g:ctrlp_working_path_mode = 'ra' " search working directory
 
@@ -399,6 +429,10 @@ filetype off
 " Plugin Calendar {{{
 	let g:calendar_google_calendar = 1 " show google calendar
 	let g:calendar_google_task = 1     " show google tasks
+" }}}
+
+" Plugin Loremipsum {{{
+	nnoremap <leader>lorem :Loremipsum<cr>
 " }}}
 
 " Ruby and Rails {{{
