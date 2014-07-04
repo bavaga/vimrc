@@ -157,10 +157,8 @@ filetype off
 	Plugin 'gerw/vim-latex-suite'
 	Plugin 'itchyny/calendar.vim'
 
-	" All of your Plugins must be added before the following line
 	call vundle#end()
 	filetype plugin indent on
-
 " }}}
 
 " VIM {{{
@@ -423,23 +421,3 @@ filetype off
 		autocmd FileType markdown setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 	augroup END
 " }}}
-
-
-function! s:Filter_lines(cmd, filter)
-  let save_more = &more
-  set nomore
-  redir => lines
-  silent execute a:cmd
-  redir END
-  let &more = save_more
-  new
-  setlocal buftype=nofile bufhidden=hide noswapfile
-  put =lines
-  g/^\s*$/d
-  %s/^\s*\d\+:\s*//e
-  if !empty(a:filter)
-    execute 'v/' . a:filter . '/d'
-  endif
-  0
-endfunction
-command! -nargs=? Scriptnames call s:Filter_lines('scriptnames', <q-args>)
