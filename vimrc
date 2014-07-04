@@ -225,7 +225,7 @@ filetype off
 		try
 			colorscheme jellybeans
 			hi SpecialKey ctermbg=233                   " set background of special keys (tabs)
-		catch 
+		catch
 		endtry
 		set colorcolumn=81                          " display a line at the edge of the set textwidth
 		highlight ColorColumn ctermbg=234 guibg=234 " set color of the line at the edge
@@ -268,7 +268,8 @@ filetype off
 	let g:airline_theme = 'base16'           " set color style
 	set statusline=%<%f\                     " Filename
 	set statusline+=%w%h%m%r                 " Options
-	if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+	"if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+	if exists("*fugitive#statusline()")
 		set statusline+=%{fugitive#statusline()} " Git Hotness
 	endif
 	set statusline+=\ [%{&ff}/%Y]            " Filetype
