@@ -222,8 +222,11 @@ filetype off
 	" }}}
 
 	" UI {
-		colorscheme jellybeans
-		hi SpecialKey ctermbg=233                   " set background of special keys (tabs)
+		try
+			colorscheme jellybeans
+			hi SpecialKey ctermbg=233                   " set background of special keys (tabs)
+		catch 
+		endtry
 		set colorcolumn=81                          " display a line at the edge of the set textwidth
 		highlight ColorColumn ctermbg=234 guibg=234 " set color of the line at the edge
 	" }}}
@@ -265,7 +268,9 @@ filetype off
 	let g:airline_theme = 'base16'           " set color style
 	set statusline=%<%f\                     " Filename
 	set statusline+=%w%h%m%r                 " Options
-	set statusline+=%{fugitive#statusline()} " Git Hotness
+	if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+		set statusline+=%{fugitive#statusline()} " Git Hotness
+	endif
 	set statusline+=\ [%{&ff}/%Y]            " Filetype
 	set statusline+=\ [%{getcwd()}]          " Current dir
 	set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
