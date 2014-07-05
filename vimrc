@@ -21,6 +21,10 @@
 " <leader>sn : move to next misspelled word
 " <leader>sp : move to previous misspelled word
 " <leader>ss : show possible options
+" Note:
+"	Spell files can be found here:
+"	http://ftp.vim.org/vim/runtime/spell/
+"	Download the targeted language file (*.spl) and put it in ~/.vim/spell
 "
 " NERDTreeTab
 " -------------------------------------
@@ -134,6 +138,10 @@
 " ü : substitute ö by {\"o}
 " ü : substitute Ö by {\"O}
 " ß : substitute ß by {\ss}
+"
+" Calendar.vim
+" -------------------------------
+" <leader>c: show calendar
 
 
 set nocompatible              " be iMproved, required
@@ -272,15 +280,6 @@ filetype off
 		nnoremap <C-L> :tabnext<CR>
 		nnoremap <leader><space> :nohlsearch<CR>
 		nnoremap <leader>pm :set paste!<cr>
-
-		"vnoremap <leader>c y
-		"vnoremap <leader>x d
-		"nnoremap <leader>v p
-
-		" Visual shifting (does not exit Visual mode)
-		" vnoremap < <gv
-		" vnoremap > >gv
-
 	" }}}
 
 	" Spell checking {{{
@@ -430,6 +429,8 @@ filetype off
 " Plugin Calendar {{{
 	let g:calendar_google_calendar = 1 " show google calendar
 	let g:calendar_google_task = 1     " show google tasks
+
+	nnoremap <leader>c :Calendar<cr>
 " }}}
 
 " Plugin Loremipsum {{{
