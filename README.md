@@ -8,6 +8,9 @@ My vim configuration
     ln -s ~/.vim/vimrc ~/.vimrc
     vi +PluginInstall +qall
 
+## Short cuts
+All short cuts are documented inside the `vimrc` file.
+
 ## Spell Files
 Spell files can be found here: http://ftp.vim.org/vim/runtime/spell/
 
