@@ -142,7 +142,22 @@
 " Calendar.vim
 " -------------------------------
 " <leader>c: show calendar
-
+"
+" TextObject
+" -------------------------------
+" aj, ij: braces of any kind
+" ada, ida: date and time
+" ae, ie: entire buffer
+" ao, io: blocks of indentation whitespace
+" ai, ii: block of similarly indented lines
+" aI, iI: block of lines with the same indentation
+" ar, ir: ruby block
+" aq, iq: closest pairs of quotes of any type
+" a,, i,: parameter
+" al, il: current line
+" aE, iE: erb block
+" af, if: python function
+" ac, ic, python class
 
 set nocompatible              " be iMproved, required
 filetype off
@@ -155,6 +170,17 @@ filetype off
 	"call vundle#begin('~/some/path/here')
 
 	Plugin 'gmarik/Vundle.vim'
+	Plugin 'kana/vim-textobj-user'
+	Plugin 'Julian/vim-textobj-brace'
+	Plugin 'kana/vim-textobj-datetime'
+	Plugin 'kana/vim-textobj-entire'
+	Plugin 'glts/vim-textobj-indblock'
+	Plugin 'kana/vim-textobj-indent'
+	Plugin 'sgur/vim-textobj-parameter'
+	Plugin 'kana/vim-textobj-line'
+	Plugin 'whatyouhide/vim-textobj-erb'
+	Plugin 'nelstrom/vim-textobj-rubyblock'
+	Plugin 'beloglazov/vim-textobj-quotes'
 	Plugin 'tpope/vim-repeat'
 	Plugin 'gagoar/StripWhiteSpaces'
 	Plugin 'sjl/gundo.vim'
