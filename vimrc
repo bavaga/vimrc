@@ -14,13 +14,13 @@
 "
 " Spell checking
 " -------------------------------------
-" <leader>s  : toggle spell checking
-" <leader>se : switch to English dictionary
-" <leader>sd : switch to German dictionary
-" <leader>sa : set to German and English dictionary
-" <leader>sn : move to next misspelled word
-" <leader>sp : move to previous misspelled word
-" <leader>ss : show possible options
+" <leader>s   : toggle spell checking
+" <leader>sen : switch to English dictionary
+" <leader>sde : switch to German dictionary
+" <leader>sa  : set to German and English dictionary
+" <leader>sn  : move to next misspelled word
+" <leader>sp  : move to previous misspelled word
+" <leader>ss  : show possible options
 " Note:
 "	Spell files can be found here:
 "	http://ftp.vim.org/vim/runtime/spell/
@@ -145,6 +145,7 @@
 "
 " TextObject
 " -------------------------------
+" aw, iw: word
 " aj, ij: braces of any kind
 " ada, ida: date and time
 " ae, ie: entire buffer
@@ -170,6 +171,7 @@ filetype off
 	"call vundle#begin('~/some/path/here')
 
 	Plugin 'gmarik/Vundle.vim'
+	Plugin 'vim-scripts/gnuplot.vim'
 	Plugin 'kana/vim-textobj-user'
 	Plugin 'Julian/vim-textobj-brace'
 	Plugin 'kana/vim-textobj-datetime'
@@ -311,8 +313,8 @@ filetype off
 	" Spell checking {{{
 		set spelllang=de,en
 		nnoremap <leader>s :set spell!<cr>
-		nnoremap <leader>se :set spelllang=en<cr>
-		nnoremap <leader>sd :set spelllang=de<cr>
+		nnoremap <leader>sen :set spelllang=en<cr>
+		nnoremap <leader>sde :set spelllang=de<cr>
 		nnoremap <leader>sa :set spelllang=de,en<cr>
 		nnoremap <leader>sn ]s
 		nnoremap <leader>sp [s
@@ -389,8 +391,8 @@ filetype off
 	vnoremap <leader>t,, :Tabularize /,\zs<CR>
 	nnoremap <leader>t; :Tabularize /;<CR>
 	vnoremap <leader>t; :Tabularize /;<CR>
-	nnoremap <leader>t;; :Tabularize /;;\zs<CR>
-	vnoremap <leader>t;; :Tabularize /;;\zs<CR>
+	nnoremap <leader>t;; :Tabularize /;\zs<CR>
+	vnoremap <leader>t;; :Tabularize /;\zs<CR>
 	nnoremap <leader>t" :Tabularize /"<CR>
 	vnoremap <leader>t" :Tabularize /"<CR>
 	nnoremap <leader>t<Bar> :Tabularize /<Bar><CR>
@@ -432,6 +434,7 @@ filetype off
 
 " Plugin vim-latex-suite {{{
 	let g:tex_flavor='latex'
+	let g:Tex_SmartKeyQuote=0
 
 	augroup bavaga
 		autocmd FileType tex inoremap ü {\"u}
@@ -487,5 +490,11 @@ filetype off
 	augroup bavaga
 		autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 		autocmd FileType markdown setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
+	augroup END
+" }}}
+
+" Gnuplot {{{
+	augroup bavaga
+		autocmd BufNewFile,BufReadPost *.gp,*.gnuplot set filetype=gnuplot
 	augroup END
 " }}}
