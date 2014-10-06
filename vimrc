@@ -159,6 +159,10 @@
 " aE, iE: erb block
 " af, if: python function
 " ac, ic, python class
+"
+" vim-indent-guides
+" -------------------------------
+" <leader>ti: toggle indent guides
 
 set nocompatible              " be iMproved, required
 filetype off
@@ -170,6 +174,7 @@ filetype off
 	" alternatively, pass a path where Vundle should install plugins
 	"call vundle#begin('~/some/path/here')
 
+	Plugin 'slim-template/vim-slim.git'
 	Plugin 'gmarik/Vundle.vim'
 	Plugin 'vim-scripts/gnuplot.vim'
 	Plugin 'kana/vim-textobj-user'
@@ -223,6 +228,7 @@ filetype off
 	Plugin 'scrooloose/syntastic'
 	Plugin 'gerw/vim-latex-suite'
 	Plugin 'itchyny/calendar.vim'
+	Plugin 'nathanaelkane/vim-indent-guides'
 
 	call vundle#end()
 	filetype plugin indent on
@@ -308,6 +314,11 @@ filetype off
 		nnoremap <C-L> :tabnext<CR>
 		nnoremap <leader><space> :nohlsearch<CR>
 		nnoremap <leader>pm :set paste!<cr>
+
+		map <Down> gj
+		map <Up>   gk
+		nnoremap j gj
+		nnoremap k gk
 	" }}}
 
 	" Spell checking {{{
@@ -466,10 +477,12 @@ filetype off
 	nnoremap <leader>lorem :Loremipsum<cr>
 " }}}
 
+" Plugin vim-indent-guides {{{
+	nmap <silent><unique> <Leader>ti <Plug>IndentGuidesToggle " toggle indent guide
 " Ruby and Rails {{{
 	augroup bavaga
 		" expand tabs in ruby, yaml and rails files
-		autocmd FileType yaml,ruby setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
+		autocmd FileType slim,yaml,ruby,haml setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
 		autocmd Filetype ruby nnoremap <localleader>pc :CtrlP app/controllers<CR>
 		autocmd Filetype ruby nnoremap <localleader>pv :CtrlP app/views<CR>
 		autocmd Filetype ruby nnoremap <localleader>pm :CtrlP app/models<CR>
