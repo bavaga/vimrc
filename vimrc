@@ -243,6 +243,7 @@ filetype off
 		syntax on                                      " enable syntax highlighting
 		autocmd BufWinEnter * silent! :%foldopen!      " start out files with all folds opened
 		autocmd Syntax * normal zR                     " check this
+		set cm=blowfish                                " set encryption
 		set autoindent                                 " enable auto-indent
 		set mouse=a                                    " enable mouse
 		set backspace=indent,eol,start                 " Backspace for dummies
@@ -509,5 +510,11 @@ filetype off
 " Gnuplot {{{
 	augroup bavaga
 		autocmd BufNewFile,BufReadPost *.gp,*.gnuplot set filetype=gnuplot
+	augroup END
+" }}}
+
+" Encryption {{{
+	augroup bavaga
+		autocmd BufReadPost * if &key != "" | set noswapfile nowritebackup viminfo= nobackup noshelltemp history=0 secure | endif
 	augroup END
 " }}}
